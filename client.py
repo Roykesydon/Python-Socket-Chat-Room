@@ -27,9 +27,10 @@ def connect_to_server():
 
 def receive():
     global stop_thread, config
+    buffer = [b""]
     while not stop_thread:
         try:
-            message = recv(client, config)
+            message = recv(client, config, buffer)
             if message == "":
                 print("Server Error")
                 stop_thread = True

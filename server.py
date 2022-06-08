@@ -66,11 +66,12 @@ def broadcast(message: str) -> None:
 def handle(client: socket.socket, address: str):
     global config
     nickname_address = None
+    buffer=[b""]
 
     try:
         send(client, "Input your nick name:", config)
 
-        nickname = recv(client, config)
+        nickname = recv(client, config, buffer)
 
         nickname_address = f"{nickname}-{address}:{port}"
         nickname_address_list.append(nickname_address)
@@ -81,7 +82,7 @@ def handle(client: socket.socket, address: str):
         broadcast(f"{nickname} joined")
 
         while True:
-            message = recv(client, config)
+            message = recv(client, config, buffer)
             if message == "":
                 close_connection_with_client(client, nickname_address)
                 break

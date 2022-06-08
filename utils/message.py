@@ -1,6 +1,6 @@
 import socket
 import struct
-from typing import Tuple
+from typing import Tuple, List
 
 
 def send(_socket: socket.socket, message: str, config: dict) -> None:
@@ -52,18 +52,16 @@ def can_get_complete_message(message_len_bytes: int, message_buffer: bytes) -> b
         base += message_len_bytes + 1 + package_len
 
 
-def recv(client: socket.socket, config: dict) -> str:
-    message_buffer = b""
+def recv(client: socket.socket, config: dict, buffer: List[bytes]) -> str:
+    message_buffer = buffer[0]
     message_len_bytes = int(config["message_len_bytes"])
 
-    while True:
+    while not can_get_complete_message(message_len_bytes, message_buffer):
         package = client.recv(1024)
         if package == b"":
             raise Exception
 
         message_buffer += package
-        if can_get_complete_message(message_len_bytes, message_buffer):
-            break
 
     message_len_bytes = int(config["message_len_bytes"])
 
@@ -80,6 +78,7 @@ def recv(client: socket.socket, config: dict) -> str:
 
         # This is the last package
         if not have_next_connected_package:
+            buffer[0] = message_buffer
             return byte_complete_message.decode("utf-8")
 
 
