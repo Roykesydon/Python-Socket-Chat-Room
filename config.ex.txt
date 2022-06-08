@@ -1,0 +1,3 @@
+server_ip=xxx.xxx.xxx.xxx
+server_port=xxxx
+message_len_bytes=3
