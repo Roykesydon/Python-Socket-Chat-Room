@@ -1,5 +1,7 @@
 # Python-Socket-Chat-Room
 
+![](/source/demo.gif)
+
 ## How to use
 1. write config.txt
     ```
