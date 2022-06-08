@@ -27,7 +27,7 @@
             client.send("Connected to server!".encode("utf-8"))
             broadcast(f"{nickname} joined")
         ```
-        比如原本未處理的時候這兩句話有可能一起發送
+        比如原本未處理的時候，這兩句話有可能一起發送
         所以 utils/message.py 有對這做處理<br/>
         message_len_bytes 可以設定每次訊息要用幾個 bytes 來儲存接下來的訊息長度<br/>
         如果訊息的長度超過 bytes 可表示的數量，就拆開多次發送
