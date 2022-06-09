@@ -1,6 +1,6 @@
 # Python-Socket-Chat-Room
 
-![](/source/demo.gif)
+![](/src/source/demo.gif)
 
 ## How to use
 1. write config.txt
