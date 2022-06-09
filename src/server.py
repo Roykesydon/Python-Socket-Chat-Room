@@ -66,7 +66,7 @@ def broadcast(message: str) -> None:
 def handle(client: socket.socket, address: str):
     global config
     nickname_address = None
-    buffer=[b""]
+    buffer = [b""]
 
     try:
         send(client, "Input your nick name:", config)

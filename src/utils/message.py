@@ -1,6 +1,6 @@
 import socket
 import struct
-from typing import Tuple, List
+from typing import List, Tuple
 
 
 def send(_socket: socket.socket, message: str, config: dict) -> None:
@@ -26,6 +26,8 @@ def send(_socket: socket.socket, message: str, config: dict) -> None:
             byte_message = ""
     for package in packages:
         _socket.send(package)
+    
+    return b"".join(packages)
 
 
 def can_get_complete_message(message_len_bytes: int, message_buffer: bytes) -> bool:

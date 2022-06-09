@@ -9,13 +9,15 @@
     server_port=xxxx
     message_len_bytes=3
     ```
+
+
 2. server
     ```
-    python server.py
+    python ./src/server.py
     ```
     client
     ```
-    python client.py
+    python ./src/client.py
     ```
 
 ## 補充

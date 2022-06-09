@@ -1,6 +1,6 @@
 def read_config():
     config = {}
-    with open("config.txt", "r") as config_file:
+    with open("./src/config.txt", "r") as config_file:
         lines = [line.strip() for line in config_file.readlines()]
 
         for line in lines:
